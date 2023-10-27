@@ -30,6 +30,9 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	
 	//Font myFont = new Font("Courtier")
 	Music backgroundMusic = new Music("Pac-Man-Theme-Song.wav",false);
+	Music shootMusic = new Music("shoot2.wav", false);
+	Music loseMusic = new Music("lose2.wav", false);
+	Music winMusic = new Music("win2.wav", false);
 	//frame width/height
 	//int width = 900;
 	//int height = 600;6
@@ -49,7 +52,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	Pacman open = new Pacman("pacmanOpen.png");
 	Pacman closed = new Pacman("pacmanClosed.png");
 	
-	
+	boolean played = false;
 	
 	
 	public void paint(Graphics g) {
@@ -86,12 +89,20 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		}
 		if(waveTimer <= 0 && score >= 2000) {
 			g.drawString("YOU WIN", 350, 450);
+			if(!played) {
+				winMusic.play();
+				played = true;
+			}
 				if(open.x > 1000) {
 					open.x = 0;
 				}
 		}
 		if(waveTimer <= 0 && score < 2000) {
 			g.drawString("YOU LOSE", 350, 450);
+			if(!played) {
+				loseMusic.play();
+				played = true;
+			}
 			if(open.x > 1000) {
 				open.x = 0;
 			}
@@ -115,7 +126,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		t.start();
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setVisible(true);
-		backgroundMusic.play();
+		//backgroundMusic.play();
 	}
 	
 	
@@ -139,7 +150,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 
 	@Override
 	public void mousePressed(MouseEvent m) {
-
+		shootMusic.play();
 		System.out.println("press event block  of code");
 		System.out.println(m.getX() + ":" + m.getY());
 		
