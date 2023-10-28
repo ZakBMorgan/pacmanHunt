@@ -52,6 +52,16 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	Pacman open = new Pacman("pacmanOpen.png");
 	Pacman closed = new Pacman("pacmanClosed.png");
 	
+	orb orb = new orb("orb.png");
+	orb orb2 = new orb("orb.png");
+	orb orb3 = new orb("orb.png");
+	orb orb4 = new orb("orb.png");
+	orb orb5 = new orb("orb.png");
+	orb orb6 = new orb("orb.png");
+	orb orb7 = new orb("orb.png");
+	orb orb8 = new orb("orb.png");
+	orb orb9 = new orb("orb.png");
+	
 	boolean played = false;
 	
 	
@@ -60,8 +70,21 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		
 		//Call the paint method of your objects here
 		b.paint(g);
+		
+		orb.paint(g);
+		orb2.paint(g);
+		orb3.paint(g);
+		orb4.paint(g);
+		orb5.paint(g);
+		orb6.paint(g);
+		orb7.paint(g);
+		orb8.paint(g);
+		orb9.paint(g);
+		
 		clydeRight.paint(g);
+		
 		open.paint(g);
+		
 		
 		//Wave timer
 		g.setFont(timeFont);
@@ -92,6 +115,8 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			if(!played) {
 				winMusic.play();
 				played = true;
+				clydeRight.x = -1000;
+				clydeRight.vx = 0;
 			}
 				if(open.x > 1000) {
 					open.x = 0;
@@ -102,6 +127,8 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			if(!played) {
 				loseMusic.play();
 				played = true;
+				clydeRight.x = -1000;
+				clydeRight.vx = 0;
 			}
 			if(open.x > 1000) {
 				open.x = 0;
@@ -127,6 +154,19 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setVisible(true);
 		//backgroundMusic.play();
+		
+		orb2.x = 450;
+ 		orb3.x = 850;
+ 		orb4.y = 400;
+ 		orb5.x = 450;
+ 		orb5.y = 400;
+ 		orb6.x = 850;
+ 		orb6.y = 400;
+ 		orb7.y = 800;
+ 		orb8.x = 450;
+ 		orb8.y = 800;
+ 		orb9.x = 850;
+ 		orb9.y = 800;
 	}
 	
 	
@@ -171,95 +211,94 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			//let's "fake" respawning by teleporting the object back to some starting value
 			//reset: will vary per gameplay/student.
 			Random r = new Random();
-			int i = r.nextInt(0, 17);
+			int i = r.nextInt(0, 9);
 			if (i == 0){
-				clydeRight.y = 50;
+				clydeRight.y = 100;
 				clydeRight.x = 50;
 				open.x = 0;
 				open.y = 400;
 			} else if (i == 1) {
 				clydeRight.y = 100;
-				clydeRight.x = 50;
+				clydeRight.x = 450;
 				open.x = 0;
 				open.y = 400;
 			} else if (i == 2) {
-				clydeRight.y = 150;
-				clydeRight.x = 50;
+				clydeRight.y = 100;
+				clydeRight.x = 850;
 				open.x = 0;
 				open.y = 400;
 			} else if (i == 3) {
-				clydeRight.y = 200;
-				clydeRight.x = 50;
+				clydeRight.y = 400;
+				clydeRight.x = 850;
 				open.x = 0;
 				open.y = 400;
 			} else if (i == 4) {
-				clydeRight.y = 250;
-				clydeRight.x = 50;
+				clydeRight.y = 400;
+				clydeRight.x = 450;
 				open.x = 0;
 				open.y = 400;
 			} else if (i == 5) {
-				clydeRight.y = 300;
-				clydeRight.x = 50;
+				clydeRight.y = 400;
+				clydeRight.x = 850;
 				open.x = 0;
 				open.y = 400;
 			} else if (i == 6) {
-				clydeRight.y = 350;
-				clydeRight.x = 50;
+				clydeRight.y = 800;
+				clydeRight.x = 850;
 				open.x = 0;
 				open.y = 400;
 			} else if (i == 7) {
-				clydeRight.y = 400;
-				clydeRight.x = 50;
+				clydeRight.y = 800;
+				clydeRight.x = 450;
 				open.x = 0;
 				open.y = 400;
 			} else if (i == 8) {
-				clydeRight.y = 450;
-				clydeRight.x = 50;
-				open.x = 0;
-				open.y = 400;
-			} else if (i == 9) {
-				clydeRight.y = 500;
-				clydeRight.x = 50;
-				open.x = 0;
-				open.y = 400;
-			} else if (i == 10) {
-				clydeRight.y = 550;
-				clydeRight.x = 50;
-				open.x = 0;
-				open.y = 400;
-			} else if (i == 11) {
-				clydeRight.y = 600;
-				clydeRight.x = 50;
-				open.x = 0;
-				open.y = 400;
-			} else if (i == 12) {
-				clydeRight.y = 650;
-				clydeRight.x = 50;
-				open.x = 0;
-				open.y = 400;
-			} else if (i == 13) {
-				clydeRight.y = 700;
-				clydeRight.x = 50;
-				open.x = 0;
-				open.y = 400;
-			} else if (i == 14) {
-				clydeRight.y = 750;
-				clydeRight.x = 50;
-				open.x = 0;
-				open.y = 400;
-			} else if (i == 15) {
 				clydeRight.y = 800;
-				clydeRight.x = 50;
-				open.x = 0;
-				open.y = 400;
-			} else if (i == 16) {
-				clydeRight.y = 850;
-				clydeRight.x = 50;
+				clydeRight.x = 850;
 				open.x = 0;
 				open.y = 400;
 			}
-			clydeRight.vx += 10;
-			clydeRight.vy += 10;
+			
+			if(score == 200) {
+				clydeRight.vx = 15;
+				clydeRight.vy = 25;
+			}
+			else if(score == 400) {
+				clydeRight.vx = 20;
+				clydeRight.vy = 30;
+			}
+			else if(score == 600) {
+				clydeRight.vx = 25;
+				clydeRight.vy = 35;
+			}
+			else if(score == 800) {
+				clydeRight.vx = 30;
+				clydeRight.vy = 40;
+			}
+			else if(score == 1000) {
+				clydeRight.vx = 35;
+				clydeRight.vy = 45;
+			}
+			else if(score == 1200) {
+				clydeRight.vx = 40;
+				clydeRight.vy = 50;
+			}
+			else if(score == 1400) {
+				clydeRight.vx = 45;
+				clydeRight.vy = 55;
+			}
+			else if(score == 1600) {
+				clydeRight.vx = 50;
+				clydeRight.vy = 60;
+			}
+			else if(score == 1800) {
+				clydeRight.vx = 55;
+				clydeRight.vy = 65;
+			}else {
+				clydeRight.vx = 100;
+				clydeRight.vy = 100;
+			}
+			
 
 
 		}
